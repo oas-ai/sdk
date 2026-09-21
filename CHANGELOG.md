@@ -4,3 +4,4 @@
 
 - OAS VehicleState Protocol Buffers contract의 초기 버전을 추가했습니다.
 - `v1` Protocol Buffers compatibility 정책을 추가했습니다.
+- Buf format 및 Pull Request breaking-change 검사 정책을 추가했습니다.

@@ -10,3 +10,5 @@ jobs:
     uses: oas-ai/.github/.github/workflows/license-check.yml@main
   protobuf:
     uses: oas-ai/.github/.github/workflows/protobuf-ci.yml@main
+    with:
+      enable-breaking-check: true
