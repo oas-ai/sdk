@@ -1,0 +1,88 @@
+syntax = "proto3";
+
+package oas.vehicle.v1;
+
+// OAS Canonical Vehicle Model의 read-only 상태 snapshot이다.
+// 모든 물리량은 SI 단위를 사용한다.
+message VehicleState {
+  // Unix epoch 기준 관측 시각(ns)이다.
+  uint64 timestamp_ns = 1;
+  float vehicle_speed_mps = 2;
+  float acceleration_mps2 = 3;
+  repeated WheelState wheels = 4;
+  SteeringState steering = 5;
+  BrakeState brake = 6;
+  AcceleratorState accelerator = 7;
+  GearState gear = 8;
+  CruiseState cruise = 9;
+  repeated DoorState doors = 10;
+  repeated SeatbeltState seatbelts = 11;
+}
+
+enum WheelPosition {
+  WHEEL_POSITION_UNSPECIFIED = 0;
+  WHEEL_POSITION_FRONT_LEFT = 1;
+  WHEEL_POSITION_FRONT_RIGHT = 2;
+  WHEEL_POSITION_REAR_LEFT = 3;
+  WHEEL_POSITION_REAR_RIGHT = 4;
+}
+
+message WheelState {
+  WheelPosition position = 1;
+  float speed_mps = 2;
+}
+
+message SteeringState {
+  float angle_rad = 1;
+  float torque_nm = 2;
+}
+
+message BrakeState {
+  bool pressed = 1;
+}
+
+message AcceleratorState {
+  float position = 1;
+}
+
+enum GearPosition {
+  GEAR_POSITION_UNSPECIFIED = 0;
+  GEAR_POSITION_PARK = 1;
+  GEAR_POSITION_REVERSE = 2;
+  GEAR_POSITION_NEUTRAL = 3;
+  GEAR_POSITION_DRIVE = 4;
+}
+
+message GearState {
+  GearPosition position = 1;
+}
+
+message CruiseState {
+  bool enabled = 1;
+}
+
+enum DoorPosition {
+  DOOR_POSITION_UNSPECIFIED = 0;
+  DOOR_POSITION_FRONT_LEFT = 1;
+  DOOR_POSITION_FRONT_RIGHT = 2;
+  DOOR_POSITION_REAR_LEFT = 3;
+  DOOR_POSITION_REAR_RIGHT = 4;
+}
+
+message DoorState {
+  DoorPosition position = 1;
+  bool open = 2;
+}
+
+enum SeatPosition {
+  SEAT_POSITION_UNSPECIFIED = 0;
+  SEAT_POSITION_DRIVER = 1;
+  SEAT_POSITION_FRONT_PASSENGER = 2;
+  SEAT_POSITION_REAR_LEFT = 3;
+  SEAT_POSITION_REAR_RIGHT = 4;
+}
+
+message SeatbeltState {
+  SeatPosition position = 1;
+  bool latched = 2;
+}
