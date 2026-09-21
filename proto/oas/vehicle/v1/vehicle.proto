@@ -6,9 +6,9 @@ package oas.vehicle.v1;
 // 모든 물리량은 SI 단위를 사용한다.
 message VehicleState {
   // Unix epoch 기준 관측 시각(ns)이다.
-  uint64 timestamp_ns = 1;
-  float vehicle_speed_mps = 2;
-  float acceleration_mps2 = 3;
+  optional uint64 timestamp_ns = 1;
+  optional float vehicle_speed_mps = 2;
+  optional float acceleration_mps2 = 3;
   repeated WheelState wheels = 4;
   SteeringState steering = 5;
   BrakeState brake = 6;
@@ -29,20 +29,20 @@ enum WheelPosition {
 
 message WheelState {
   WheelPosition position = 1;
-  float speed_mps = 2;
+  optional float speed_mps = 2;
 }
 
 message SteeringState {
-  float angle_rad = 1;
-  float torque_nm = 2;
+  optional float angle_rad = 1;
+  optional float torque_nm = 2;
 }
 
 message BrakeState {
-  bool pressed = 1;
+  optional bool pressed = 1;
 }
 
 message AcceleratorState {
-  float position = 1;
+  optional float position = 1;
 }
 
 enum GearPosition {
@@ -58,7 +58,7 @@ message GearState {
 }
 
 message CruiseState {
-  bool enabled = 1;
+  optional bool enabled = 1;
 }
 
 enum DoorPosition {
@@ -71,7 +71,7 @@ enum DoorPosition {
 
 message DoorState {
   DoorPosition position = 1;
-  bool open = 2;
+  optional bool open = 2;
 }
 
 enum SeatPosition {
@@ -84,5 +84,5 @@ enum SeatPosition {
 
 message SeatbeltState {
   SeatPosition position = 1;
-  bool latched = 2;
+  optional bool latched = 2;
 }
