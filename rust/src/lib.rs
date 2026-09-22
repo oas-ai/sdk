@@ -20,6 +20,7 @@ mod tests {
             timestamp_ns: Some(1_000),
             vehicle_speed_mps: Some(12.5),
             night_mode: Some(true),
+            raw_signals: [("CGW1.CF_Gway_DrvDrSw".into(), 1.0)].into(),
             steering: Some(SteeringState {
                 angle_rad: Some(0.5),
                 torque_nm: None,
@@ -32,5 +33,6 @@ mod tests {
             state
         );
         assert_eq!(state.night_mode, Some(true));
+        assert_eq!(state.raw_signals["CGW1.CF_Gway_DrvDrSw"], 1.0);
     }
 }

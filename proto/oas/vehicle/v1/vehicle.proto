@@ -19,6 +19,8 @@ message VehicleState {
   repeated SeatbeltState seatbelts = 11;
   // 차량 조명/ambient sensor가 야간으로 판정했는지 나타낸다. 불명일 수 있다.
   optional bool night_mode = 12;
+  // DBC 신호를 의미 해석 없이 보존한 최신 physical value다.
+  map<string, double> raw_signals = 13;
 }
 
 enum WheelPosition {
