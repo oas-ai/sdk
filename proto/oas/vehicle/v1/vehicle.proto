@@ -90,3 +90,25 @@ message SeatbeltState {
   SeatPosition position = 1;
   optional bool latched = 2;
 }
+
+// HMI가 안전 정책을 재구현하지 않도록 runtime이 제공하는 read-only 모델이다.
+message HmiState {
+  VehicleState vehicle_state = 1;
+  HmiFreshness freshness = 2;
+  HmiCapability media_playback = 3;
+  string media_playback_reason = 4;
+  HmiCapability diagnostics = 5;
+  HmiCapability vehicle_controls = 6;
+}
+
+enum HmiFreshness {
+  HMI_FRESHNESS_UNAVAILABLE = 0;
+  HMI_FRESHNESS_FRESH = 1;
+  HMI_FRESHNESS_STALE = 2;
+}
+
+enum HmiCapability {
+  HMI_CAPABILITY_UNAVAILABLE = 0;
+  HMI_CAPABILITY_ALLOWED = 1;
+  HMI_CAPABILITY_LOCKED = 2;
+}

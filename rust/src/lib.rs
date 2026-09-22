@@ -12,7 +12,7 @@ pub mod vehicle {
 mod tests {
     use prost::Message;
 
-    use crate::vehicle::v1::{SteeringState, VehicleState};
+    use crate::vehicle::v1::{HmiCapability, HmiFreshness, HmiState, SteeringState, VehicleState};
 
     #[test]
     fn vehicle_state_round_trips_on_the_wire() {
@@ -34,5 +34,19 @@ mod tests {
         );
         assert_eq!(state.night_mode, Some(true));
         assert_eq!(state.raw_signals["CGW1.CF_Gway_DrvDrSw"], 1.0);
+    }
+
+    #[test]
+    fn hmi_state_carries_runtime_policy_without_recalculation() {
+        let state = HmiState {
+            vehicle_state: Some(VehicleState::default()),
+            freshness: HmiFreshness::Fresh as i32,
+            media_playback: HmiCapability::Locked as i32,
+            media_playback_reason: "not_parked".into(),
+            diagnostics: HmiCapability::Allowed as i32,
+            vehicle_controls: HmiCapability::Unavailable as i32,
+        };
+
+        assert_eq!(HmiState::decode(state.encode_to_vec().as_slice()).unwrap(), state);
     }
 }
