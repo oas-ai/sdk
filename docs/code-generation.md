@@ -24,7 +24,7 @@ schema release
 - TypeScript: Web UI와 diagnostics UI
 - C++: 기존 Automotive SDK 연동이 필요한 경우에만 사용
 
-각 package의 이름, registry, release automation은 첫 public consumer가 정해질 때 결정한다. `sdk`는 아직 service transport 또는 Vehicle Control command를 생성하지 않는다.
+첫 Rust consumer인 Gateway는 `oas-sdk` package를 Git revision으로 사용한다. 공개 registry와 release automation은 외부 consumer가 생길 때 결정한다. `sdk`는 아직 service transport 또는 Vehicle Control command를 생성하지 않는다.
 
 ## Compatibility gate
 

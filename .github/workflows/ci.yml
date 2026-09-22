@@ -12,3 +12,5 @@ jobs:
     uses: oas-ai/.github/.github/workflows/protobuf-ci.yml@main
     with:
       enable-breaking-check: true
+  rust:
+    uses: oas-ai/.github/.github/workflows/rust-ci.yml@main
