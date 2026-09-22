@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Add the build-generated `oas-sdk` Rust protobuf package.
+- Add optional `VehicleState.night_mode` for observed vehicle lighting state.
 
 ## [0.1.0] - 2026-09-21
 

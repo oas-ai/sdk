@@ -9,6 +9,7 @@
 - 제거가 필요한 field는 `deprecated = true`로 표시하고 number는 예약한다.
 - enum의 `*_UNSPECIFIED = 0`은 유지한다. 이미 배포된 enum number의 의미를 바꾸지 않는다.
 - signal이 관측되지 않았음을 0이나 `false`와 혼동하지 않도록 선택적 scalar는 `optional`로 표현한다.
+- `VehicleState.night_mode`는 선택적 bool이다. `true`와 `false`는 검증된 차량 입력 상태(예: 저빔 ON/OFF)이고, `unset`은 차량이 신호를 제공하지 않았음을 뜻한다.
 - breaking change는 새 package major version(예: `oas.vehicle.v2`)으로만 제공하며 migration 문서를 함께 낸다.
 
 ## 검증
