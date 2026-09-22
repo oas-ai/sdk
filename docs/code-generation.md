@@ -26,6 +26,12 @@ schema release
 
 첫 Rust consumer인 Gateway는 `oas-sdk` package를 Git revision으로 사용한다. 공개 registry와 release automation은 외부 consumer가 생길 때 결정한다. `sdk`는 아직 service transport 또는 Vehicle Control command를 생성하지 않는다.
 
+## TODO: Public Rust release
+
+- Actions 예산이 확보되면 crates.io 배포 workflow를 추가한다.
+- crates.io의 기존 `oas-sdk` package와 충돌하지 않도록 공개 package 이름은 `oas-ai-sdk`를 우선 검토한다.
+- 배포 전 `publish = false`를 해제하고 package metadata, `cargo publish --dry-run`, owner team을 검증한다.
+
 ## Compatibility gate
 
 모든 `sdk` Pull Request는 base branch schema를 기준으로 `buf breaking`을 수행한다. wire/source compatibility를 깨는 변경은 새 major package version과 migration 문서가 필요하다.
