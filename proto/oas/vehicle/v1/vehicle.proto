@@ -17,6 +17,8 @@ message VehicleState {
   CruiseState cruise = 9;
   repeated DoorState doors = 10;
   repeated SeatbeltState seatbelts = 11;
+  // 차량 조명/ambient sensor가 야간으로 판정했는지 나타낸다. 불명일 수 있다.
+  optional bool night_mode = 12;
 }
 
 enum WheelPosition {

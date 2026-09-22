@@ -19,6 +19,7 @@ mod tests {
         let state = VehicleState {
             timestamp_ns: Some(1_000),
             vehicle_speed_mps: Some(12.5),
+            night_mode: Some(true),
             steering: Some(SteeringState {
                 angle_rad: Some(0.5),
                 torque_nm: None,
@@ -30,5 +31,6 @@ mod tests {
             VehicleState::decode(state.encode_to_vec().as_slice()).unwrap(),
             state
         );
+        assert_eq!(state.night_mode, Some(true));
     }
 }
