@@ -47,6 +47,9 @@ mod tests {
             vehicle_controls: HmiCapability::Unavailable as i32,
         };
 
-        assert_eq!(HmiState::decode(state.encode_to_vec().as_slice()).unwrap(), state);
+        assert_eq!(
+            HmiState::decode(state.encode_to_vec().as_slice()).unwrap(),
+            state
+        );
     }
 }
