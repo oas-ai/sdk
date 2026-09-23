@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Clarify active PR compatibility checks and Runtime ownership of the HmiState contract.
+
 - Add the build-generated `oas-sdk` Rust protobuf package.
 - Add optional `VehicleState.night_mode` for observed vehicle lighting state.
 

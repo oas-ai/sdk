@@ -14,7 +14,9 @@
 
 ## 검증
 
-`buf lint`는 schema style을 확인한다. PR에서 이전 `main` schema와의 breaking change 검사를 활성화하기 전에는, generated SDK와 consumer를 추가한 뒤 기준 branch와 stable tag를 명시한다.
+`buf lint`는 schema style을 확인한다. SDK CI는 `enable-breaking-check: true`로 PR base schema와의 `buf breaking` 검사를 활성화한다. consumer는 SDK Git SHA를 고정하며 generated source를 커밋하지 않는다.
+
+`HmiState`의 freshness와 capability는 Runtime이 소유한다. unknown/unspecified enum은 허용으로 해석하지 않는다. `VehicleState.raw_signals`는 DBC 원래 이름을 보존하는 진단 전용 예외이며 public 제어 계약이 아니다. C++ HMI는 로컬 수신 만료 시 표시와 capability를 닫을 수 있지만, 스스로 허용 상태를 만들지 않는다. Demo는 합성 상태임을 화면에 표시한다.
 
 ## Ownership
 
